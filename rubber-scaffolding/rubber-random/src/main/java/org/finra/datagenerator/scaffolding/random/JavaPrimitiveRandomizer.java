@@ -1,5 +1,6 @@
 package org.finra.datagenerator.scaffolding.random;
 
+import java.security.SecureRandom;
 import org.apache.commons.lang3.ArrayUtils;
 import org.springframework.util.Assert;
 
@@ -29,7 +30,7 @@ public final class JavaPrimitiveRandomizer {
     }
 
     public JavaPrimitiveRandomizer() {
-        random = new Random();
+        random = new SecureRandom();
     }
 
     private float convert(float n) {

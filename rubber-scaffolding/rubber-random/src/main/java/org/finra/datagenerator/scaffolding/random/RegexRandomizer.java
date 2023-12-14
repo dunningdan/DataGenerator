@@ -1,5 +1,6 @@
 package org.finra.datagenerator.scaffolding.random;
 
+import java.security.SecureRandom;
 import java.util.Random;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -15,7 +16,7 @@ public class RegexRandomizer {
     }
 
     public RegexRandomizer() {
-        this.random = new Random();
+        this.random = new SecureRandom();
     }
 
     public String generateFromRegex(String regex) {
