@@ -32,6 +32,7 @@
         <gremlin-scala.version>3.2.3.4</gremlin-scala.version>
         <shapeless.version>2.3.2</shapeless.version>
         <scalatest.version>3.0.0</scalatest.version>
+        <versions.java-security-toolkit>1.1.1</versions.java-security-toolkit>
     </properties>
 
     <dependencyManagement>
@@ -183,6 +184,11 @@
                 <artifactId>scalatest_2.11</artifactId>
                 <version>${scalatest.version}</version>
                 <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>io.github.pixee</groupId>
+                <artifactId>java-security-toolkit</artifactId>
+                <version>${versions.java-security-toolkit}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
