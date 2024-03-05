@@ -91,7 +91,7 @@ public class FileExtension implements CustomTagExtension<FileExtension.FileTag> 
     }
 
     private void generateFileValues(Set<String> domain, String fileName, String fileSeparator) {
-        if (fileName != null && !fileName.equals("")) {
+        if (fileName != null && !"".equals(fileName)) {
             // check cache with data file's data, maybe this file already cached
             Set<String> data;
             if (cachedDataFiles.containsKey(fileName)) {
@@ -120,7 +120,7 @@ public class FileExtension implements CustomTagExtension<FileExtension.FileTag> 
                 
                 Set<String> data = new HashSet<String>();
                 if (lines.size() == 1) {
-                    if (fileSeparator == null || fileSeparator.equals("")) {
+                    if (fileSeparator == null || "".equals(fileSeparator)) {
                         fileSeparator = ",";
                     }
                     String[] lineSplitted = lines.get(0).split(fileSeparator);

@@ -49,7 +49,7 @@ public class SCXMLGapper {
         List<CustomAction> customActions = new ArrayList<>();
 
         for (CustomTagExtension tagExtension : tagExtensionList) {
-            if (!tagExtension.getTagNameSpace().equals("http://www.w3.org/2005/07/scxml")) {
+            if (!"http://www.w3.org/2005/07/scxml".equals(tagExtension.getTagNameSpace())) {
                 CustomAction action = new CustomAction(tagExtension.getTagNameSpace(), tagExtension.getTagName(),
                         tagExtension.getTagActionClass());
                 customActions.add(action);

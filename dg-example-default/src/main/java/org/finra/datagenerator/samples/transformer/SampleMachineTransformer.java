@@ -39,7 +39,7 @@ public class SampleMachineTransformer implements DataTransformer {
         for (Map.Entry<String, String> entry : cr.getDataMap().entrySet()) {
             String value = entry.getValue();
 
-            if (value.equals("#{customplaceholder}")) {
+            if ("#{customplaceholder}".equals(value)) {
                 // Generate a random number
                 int ran = rand.nextInt();
                 entry.setValue(String.valueOf(ran));

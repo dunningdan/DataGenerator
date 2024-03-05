@@ -41,11 +41,11 @@ public class SampleMachineTransformer implements DataTransformer {
         for (String key : map.keySet()) {
             String value = map.get(key);
 
-            if (value.equals("#{customplaceholder}")) {
+            if ("#{customplaceholder}".equals(value)) {
                 // Generate a random number
                 int ran = rand.nextInt();
                 map.put(key, String.valueOf(ran));
-            } else if (value.equals("#{divideBy2}")) {
+            } else if ("#{divideBy2}".equals(value)) {
                 String i = map.get("var_out_V3");
                 String result = String.valueOf(Integer.valueOf(i) / 2);
                 map.put(key, result);

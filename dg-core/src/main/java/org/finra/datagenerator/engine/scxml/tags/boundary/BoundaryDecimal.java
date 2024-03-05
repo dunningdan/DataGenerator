@@ -45,7 +45,7 @@ public abstract class BoundaryDecimal<T extends BoundaryActionDecimal> implement
         boolean isNullable = true;
         String nullable = action.getNullable();
 
-        if (!nullable.equalsIgnoreCase("true")) {
+        if (!"true".equalsIgnoreCase(nullable)) {
             isNullable = false;
         }
 
@@ -198,7 +198,7 @@ public abstract class BoundaryDecimal<T extends BoundaryActionDecimal> implement
             }
             if (minLen == -1) {
                 minLen = min.toString().length();
-                if (Character.toString(min.toString().charAt(0)).equals("-")) {
+                if ("-".equals(Character.toString(min.toString().charAt(0)))) {
                     minLen = min.toString().length() - 1;
                 }
                 if (maxLen != -1) {
@@ -296,7 +296,7 @@ public abstract class BoundaryDecimal<T extends BoundaryActionDecimal> implement
 
             } else {
                 if (boundary.toString().length() > minLen) {
-                    if (Character.toString(boundary.toString().charAt(0)).equals("-")) {
+                    if ("-".equals(Character.toString(boundary.toString().charAt(0)))) {
                         value.append(boundary.toString().substring(0, minLen + 1));
                     } else {
                         value.append(boundary.toString().substring(0, minLen));
