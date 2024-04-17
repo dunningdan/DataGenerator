@@ -1,6 +1,7 @@
 package org.finra.datagenerator.scaffolding.transformer.service.adapter;
 
 import com.google.common.io.Files;
+import io.github.pixee.security.SystemCommand;
 import org.finra.datagenerator.scaffolding.transformer.utils.ByteClassLoader;
 import org.finra.datagenerator.scaffolding.utils.ClassInfo;
 import org.finra.datagenerator.scaffolding.utils.Javac;
@@ -24,7 +25,7 @@ public class XSDAdapter implements TransformerAdapter {
     private List<String> generatePOJO(Path output, Path input) throws Exception {
         String exec = String.format("/usr/bin/xjc -d %s %s", output, input);
         System.out.println(exec);
-        Process p = Runtime.getRuntime().exec(exec);
+        Process p = SystemCommand.runCommand(Runtime.getRuntime(), exec);
         p.waitFor();
 
         Path generated = Paths.get(output.toString()+"/generated");
