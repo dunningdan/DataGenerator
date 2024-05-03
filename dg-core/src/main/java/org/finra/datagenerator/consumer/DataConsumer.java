@@ -15,6 +15,7 @@
  */
 package org.finra.datagenerator.consumer;
 
+import io.github.pixee.security.BoundedLineReader;
 import org.apache.log4j.Logger;
 import org.finra.datagenerator.reporting.ReportingHandler;
 import org.finra.datagenerator.writer.DataWriter;
@@ -242,7 +243,7 @@ public class DataConsumer {
             URLConnection urlConnection = url.openConnection();
             try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()))) {
                 String line;
-                while ((line = bufferedReader.readLine()) != null) {
+                while ((line = BoundedLineReader.readLine(bufferedReader, 5_000_000)) != null) {
                     content.append(line).append("\n");
                 }
             }

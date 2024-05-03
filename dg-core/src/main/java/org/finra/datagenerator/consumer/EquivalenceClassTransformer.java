@@ -16,6 +16,7 @@
 
 package org.finra.datagenerator.consumer;
 
+import io.github.pixee.security.BoundedLineReader;
 import org.finra.datagenerator.engine.scxml.tags.boundary.Holiday;
 
 import java.io.BufferedReader;
@@ -189,7 +190,7 @@ public class EquivalenceClassTransformer implements DataTransformer {
         String line;
         try {
             int i = 0;
-            while ((line = reader.readLine()) != null) {
+            while ((line = BoundedLineReader.readLine(reader, 5_000_000)) != null) {
                 String[] lineSplitted = line.split("\\|");
                 if (lineSplitted.length >= 2) {
                     var1[i] = lineSplitted[0];
