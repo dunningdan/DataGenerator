@@ -15,6 +15,8 @@
  */
 package org.finra.datagenerator.consumer;
 
+import io.github.pixee.security.HostValidator;
+import io.github.pixee.security.Urls;
 import org.apache.log4j.Logger;
 import org.finra.datagenerator.reporting.ReportingHandler;
 import org.finra.datagenerator.writer.DataWriter;
@@ -237,7 +239,7 @@ public class DataConsumer {
         StringBuilder content = new StringBuilder();
 
         try {
-            URL url = new URL("http://" + reportingHost + "/" + path);
+            URL url = Urls.create("http://" + reportingHost + "/" + path, Urls.HTTP_PROTOCOLS, HostValidator.DENY_COMMON_INFRASTRUCTURE_TARGETS);
 
             URLConnection urlConnection = url.openConnection();
             try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()))) {
