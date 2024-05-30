@@ -4,6 +4,7 @@ package org.finra.datagenerator.scaffolding.utils;
  * Created by dkopel on 10/28/16.
  */
 
+import java.security.SecureRandom;
 import javax.tools.JavaCompiler;
 import javax.tools.ToolProvider;
 import java.io.File;
@@ -83,7 +84,7 @@ public class Javac {
         } else {
             tmpDirName += File.separator;
         }
-        Random r = new Random();
+        Random r = new SecureRandom();
         String name = tmpDirName + "kilim$" + r.nextLong();
         File rootDir = new File(name);
         if (!rootDir.mkdir()) {
