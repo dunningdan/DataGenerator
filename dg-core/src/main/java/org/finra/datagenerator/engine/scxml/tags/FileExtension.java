@@ -16,6 +16,7 @@
 
 package org.finra.datagenerator.engine.scxml.tags;
 
+import io.github.pixee.security.BoundedLineReader;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -112,7 +113,7 @@ public class FileExtension implements CustomTagExtension<FileExtension.FileTag> 
             try {
                 String line;
                 List<String> lines = new ArrayList<String>();
-                while ((line = bufferedReader.readLine()) != null) {
+                while ((line = BoundedLineReader.readLine(bufferedReader, 5_000_000)) != null) {
                     if (!line.startsWith("#")) {
                         lines.add(line);
                     }
